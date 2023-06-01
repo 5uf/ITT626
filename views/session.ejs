@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author="Sufi Afifi" />
+    <title>Session Data</title>
+</head>
+<style>
+    body {
+        background-color: #f2f2f2;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        color: #333;
+        display: grid;
+        place-items: center;
+
+        
+    }
+    h1 {
+        text-align: center;
+        font-size: 2em;
+        color: #333;
+    }
+    a {
+        text-align: center;
+        margin-top: 1rem;
+        text-decoration: none;
+        color: #333;
+    }
+    .button {
+    margin-top: 1rem;
+    text-align: center
+}
+.button input {
+    width: auto;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+.data {
+    width: 400px;
+    margin-top: 4rem;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+</style>
+<body>
+
+  <% if (user != null) { %> 
+        <h2>Session Data is available</h2>
+        <div class="data">
+        <h3>Name: <%= user %></h3>
+        <% if (data.admin == true) { %>
+            <p>Priviledge: Administrator</p>
+        <% } else { %>
+            <p>Priviledge: User</p>
+        <% } %>
+        <p>ID: <%= data.id %></p>
+        </div>
+        <a href="/"><button>Home</button></a>
+        <a href="/logout"><button>Log Out</button></a>
+    <% } else { %>
+        <h1>Session Data is no available</h1>
+        <a href="/login"><button>Login</button></a>
+        <a href="/signup"><button>Signup</button></a>
+    <% } %>
+   
+    
+</body>
+</html>

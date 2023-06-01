@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author="Sufi Afifi" />
+    <title>Main Page</title>
+</head>
+<style>
+  body {
+    background-color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+}
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+form {
+    width: 400px;
+    margin-top: 4rem;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.button {
+    margin-top: 1rem;
+    text-align: center
+}
+.button input {
+    width: auto;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+.button input:hover {
+    background-color: #555;
+}
+.button a {
+    text-decoration: none;
+}
+.button a input {
+    background-color: #ccc;
+    color: #333;
+}
+.button a input:hover {
+    background-color: #ddd;
+}
+img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+.msg {
+        background-color: rgb(40, 122, 95);
+        width: 400px;
+        margin: 2% auto;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+</style>
+<body>
+    <br>
+    <h1>Profile Page</h1>
+    <br>
+   <% if( typeof user !== 'undefined' && user !== null ) { %>
+        <img src="<%= image %>" alt="Profile Picture">
+        <h3>Name: <%= user %></h3>
+        <% if (data.admin == true) { %>
+            <p>Priviledge: Administrator</p>
+        <% } else { %>
+            <p>Priviledge: User</p>
+        <% } %>
+        <p>ID: <%= data.id %></p>
+    <% } else { %>
+        <div class="msg">
+            <p>Please login to view your profile</p>
+        </div>
+        <div class="button">
+            <a href="/login"><input type="button" value="Login"></a>
+            <a href="/signup"><input type="button" value="Sign Up"></a>
+        </div>
+    <% } %>
+    <form action="/" method="POST">
+        <h4>Lab 2 Exercise - Database Submission</h4>
+        <input type="text" name="name" id="name" placeholder="Enter your name">
+        <div class="button"><button type="submit">Submit</button></div>
+    </form>
+    <br>
+    <div class="button">
+        <a href="/session"><input type="button" value="Session"></a>
+        <a href="/logout"><input type="button" value="Log Out"></a>
+        <a href="/admin"><input type="button" value="List Users"></a>
+    </div>
+    <div class="alert alert-success" role="alert" >
+        <p id="loginAlert"></p>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script> 
+    //database alert
+    $(document).ready(function(){
+        var alert = $('#loginAlert').text();
+        if(alert == "Login Successful"){
+            $('.alert').css('display', 'block');
+            $('.alert').css('background-color', 'green');
+            $('.alert').css('color', 'white');
+            $('.alert').css('padding', '10px');
+            $('.alert').css('border-radius', '5px');
+            $('.alert').css('margin', '10px');
+            $('.alert').css('width', '200px');
+            $('.alert').css('text-align', 'center');
+        }
+        else if(alert == "Login Failed"){
+            $('.alert').css('display', 'block');
+            $('.alert').css('background-color', 'red');
+            $('.alert').css('color', 'white');
+            $('.alert').css('padding', '10px');
+            $('.alert').css('border-radius', '5px');
+            $('.alert').css('margin', '10px');
+            $('.alert').css('width', '200px');
+            $('.alert').css('text-align', 'center');
+        }
+    });
+</script>
+</html>

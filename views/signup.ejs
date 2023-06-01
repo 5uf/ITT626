@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author="Sufi Afifi" />
+    <title>Signup</title>
+</head>
+<style>
+  body {
+    background-color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+}
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+form {
+    width: 400px;
+    margin-top: 4rem;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.button {
+    margin-top: 1rem;
+    text-align: center
+}
+.button input {
+    width: auto;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+.button input:hover {
+    background-color: #555;
+}
+.button a {
+    text-decoration: none;
+}
+.button a input {
+    background-color: #ccc;
+    color: #333;
+}
+.button a input:hover {
+    background-color: #ddd;
+}
+</style>
+<body>
+    <form method="post" enctype="multipart/form-data" action="/signup" >
+      <h1>Signup</h1>
+        <p>
+          <label for="username">Username: </label>
+          <input type="text" name="username" id="username"/>
+        </p>
+        <p>
+          <label for="email">Email: </label>
+          <input type="email" name="email" id="email"/>
+        </p>
+        <p>
+          <label for="phone">Phone: </label>
+          <input type="text" name="phone" id="phone"/>
+        </p>
+        <p>
+          <label for="birthday">Birthday: </label>
+          <input type="date" name="birthday" id="birthday"/>
+        </p>
+        <p>
+          <label for="password">Password: </label>
+          <input type="password" name="password" id="password"/>
+        </p>
+        <p>
+          <label for="password">Confirm: </label>  
+          <input type="password" name="password2" id="password2" />
+        </p>
+        <p>
+          <label for="admin">Admin: </label>
+          <input type="checkbox" name="admin" id="admin" />
+        </p>
+        <p>
+          <label for="files">Profile: </label>
+          <input type="file" name="ppfile" id="ppfile" />
+        </p>
+        <p class="button">
+          <a href="/login"><input type="button" value="Login" /></a>
+          <input type="submit" value="Sign Up" />
+        </p>
+      </form>
+</body>
+</html>

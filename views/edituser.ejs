@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author="Sufi Afifi" />
+    <title>Update user</title>
+</head>
+<style>
+  body {
+    background-color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+}
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+form {
+    width: 400px;
+    margin-top: 4rem;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.button {
+    margin-top: 1rem;
+    text-align: center
+}
+.button input {
+    width: auto;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+.button input:hover {
+    background-color: #555;
+}
+.button a {
+    text-decoration: none;
+}
+.button a input {
+    background-color: #ccc;
+    color: #333;
+}
+
+input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
+}
+.button a input:hover {
+    background-color: #ddd;
+}
+.msg {
+        background-color: aquamarine;
+        width: 400px;
+        margin: 2% auto;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+</style>
+<body>
+  <div class="msg">
+    <p>welcome, <%= user %></p>
+</div>
+        <form method="post" enctype="multipart/form-data" action="/edit/<%= user.newUser.name %>" >
+            <h1>Update User</h1>
+              <p>
+                <label for="username">Username: </label>
+                <input type="text" name="username" id="username" value="<%= user.newUser.name %>"/>
+              </p>
+              <p>
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" value="<%= user.newUser.email %>"/>
+              </p>
+              <p>
+                <label for="phone">Phone: </label>
+                <input type="number" name="phone" id="phone" value="<%= user.newUser.phonenum %>"/>
+              </p>
+              <p>
+                <label for="birthday">Birthday: </label>
+                <input type="date" name="birthday" id="birthday" value="<%= user.newUser.birthday %>"/>
+              </p>
+                <p>
+                    <label for="password"> Reset Old Password: </label>
+                    <input type="password" name="password" id="password" />
+                </p>
+                <p>
+                    <label for="password"> Confirm New Password: </label>
+                    <input type="password" name="password2" id="password2" />
+                </p>
+              <% if (user.newUser.admin == 'on') { %>
+                <p>
+                    <label for="admin">Admin: </label>
+                    <input type="checkbox" name="admin" id="admin" checked onclick="removeChecked()"/>
+                </p>
+              <% } else { %>
+                <p>
+                    <label for="admin">Admin: </label>
+                    <input type="checkbox" name="admin" id="admin" />
+                </p>
+              <% } %>
+              
+              <!--
+                <p>
+                <label for="files">Profile: </label>
+                <img src="<%= image %>" alt="Profile Picture" height="100" width="100" />
+                <input type="file" name="ppfile" id="ppfile" value="<%= image %>"/>
+              </p>
+              -->
+              <p class="button">
+                <a href="/admin"><input type="button" value="Go back" /></a>
+                <input type="submit" value="Update" onclick="validatePassword()" />
+              </p>
+            </form>
+</body>
+
+
+<script>
+  //validate password
+  function validatePassword() {
+    var password = document.getElementById("password");
+    var confirm_password = document.getElementById("password2");
+
+    if(password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+  }
+
+  //remove checked attribute when click on checkbox
+function removeChecked() {
+  var checkbox = document.getElementById("admin");
+  if(checkbox.checked == true) {
+    checkbox.removeAttribute("checked");
+  }
+}
+
+
+
+
+</script>
+
+</html>
